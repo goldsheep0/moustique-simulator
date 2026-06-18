@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://dsovw0cdwtqux"]
+
+[ext_resource type="Script" uid="uid://bkwsi8gvtu0co" path="res://scripts/backup/arm.gd" id="1_q8oh2"]
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_dkk4w"]
+b = Vector2(360, 0)
+
+[node name="Arm" type="Node2D" unique_id=519195949]
+script = ExtResource("1_q8oh2")
+
+[node name="Points" type="Node2D" parent="." unique_id=594881935]
+
+[node name="Bone" type="StaticBody2D" parent="." unique_id=1467837460]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bone" unique_id=48822165]
+shape = SubResource("SegmentShape2D_dkk4w")
+
+[node name="Line2D" type="Line2D" parent="." unique_id=570426259]
+width = 1.0

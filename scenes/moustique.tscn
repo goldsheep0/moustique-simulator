@@ -1,0 +1,45 @@
+[gd_scene format=3 uid="uid://dy7mhkafiyh77"]
+
+[ext_resource type="Texture2D" uid="uid://bo344fy6i172c" path="res://assets/aseprite/moustique.png" id="1_08dbd"]
+[ext_resource type="Script" uid="uid://k6f3wcidcasw" path="res://scripts/moustique.gd" id="1_wudbm"]
+[ext_resource type="AudioStream" uid="uid://g7imakspmbb2" path="res://assets/sounds/buzz.mp3" id="3_8vy0j"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vus5q"]
+size = Vector2(64, 64)
+
+[sub_resource type="Gradient" id="Gradient_wudbm"]
+offsets = PackedFloat32Array(0, 0.8606557, 1)
+colors = PackedColorArray(0, 0.9529412, 0.9529412, 1, 0, 0.9529412, 0.9529412, 1, 0, 0.9529412, 0.9529412, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_8vy0j"]
+gradient = SubResource("Gradient_wudbm")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_wudbm"]
+particle_flag_disable_z = true
+spread = 180.0
+initial_velocity_min = 30.0
+initial_velocity_max = 30.0
+gravity = Vector3(0, 0, 0)
+color_ramp = SubResource("GradientTexture1D_8vy0j")
+
+[node name="Moustique" type="CharacterBody2D" unique_id=1242201102]
+script = ExtResource("1_wudbm")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=992793230]
+visible = false
+shape = SubResource("RectangleShape2D_vus5q")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=370853981]
+scale = Vector2(2, 2)
+texture = ExtResource("1_08dbd")
+
+[node name="SoundParticles" type="GPUParticles2D" parent="." unique_id=485971775]
+z_index = -1
+amount = 64
+lifetime = 0.5
+fixed_fps = 60
+process_material = SubResource("ParticleProcessMaterial_wudbm")
+
+[node name="Buzz" type="AudioStreamPlayer" parent="." unique_id=1224641935]
+stream = ExtResource("3_8vy0j")
+volume_db = -10.0

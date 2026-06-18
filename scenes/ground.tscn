@@ -1,0 +1,56 @@
+[gd_scene format=3 uid="uid://cqla04ufqt0rf"]
+
+[ext_resource type="Script" uid="uid://bdonlnu200t76" path="res://scripts/ground.gd" id="1_pybca"]
+[ext_resource type="AudioStream" uid="uid://6j75w8a5jbs5" path="res://assets/sounds/underwater.wav" id="2_mi8v4"]
+[ext_resource type="AudioStream" uid="uid://dakcvlsd0t5im" path="res://assets/sounds/wet.wav" id="3_lmksl"]
+[ext_resource type="AudioStream" uid="uid://18ywxqg8ober" path="res://assets/sounds/wet_piecring.wav" id="4_w5yvf"]
+
+[sub_resource type="Gradient" id="Gradient_pybca"]
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1)
+
+[sub_resource type="Gradient" id="Gradient_mi8v4"]
+offsets = PackedFloat32Array(0, 0.8278689, 1)
+colors = PackedColorArray(0.79607844, 0, 0, 1, 0.79607844, 0, 0, 1, 0, 0, 0, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_lmksl"]
+gradient = SubResource("Gradient_mi8v4")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_pybca"]
+particle_flag_disable_z = true
+emission_shape = 6
+emission_ring_axis = Vector3(0, 0, 1)
+emission_ring_height = 900.0
+emission_ring_radius = 900.0
+emission_ring_inner_radius = 800.0
+emission_ring_cone_angle = 90.0
+orbit_velocity_min = 0.020000096
+orbit_velocity_max = 0.030000096
+gravity = Vector3(0, 0, 0)
+color_ramp = SubResource("GradientTexture1D_lmksl")
+
+[node name="Ground" type="Node2D" unique_id=752410338]
+script = ExtResource("1_pybca")
+
+[node name="Line2D" type="Line2D" parent="." unique_id=2000116847]
+closed = true
+width = 1.0
+gradient = SubResource("Gradient_pybca")
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="." unique_id=145817890]
+amount = 1024
+lifetime = 3.0
+fixed_fps = 60
+visibility_rect = Rect2(-960.8535, -960.61505, 1920.9626, 1921.028)
+process_material = SubResource("ParticleProcessMaterial_pybca")
+
+[node name="Underwater" type="AudioStreamPlayer" parent="." unique_id=246048918]
+stream = ExtResource("2_mi8v4")
+autoplay = true
+
+[node name="Wet" type="AudioStreamPlayer" parent="." unique_id=1062942830]
+stream = ExtResource("3_lmksl")
+volume_db = -10.0
+
+[node name="WetPiecring" type="AudioStreamPlayer" parent="." unique_id=183258606]
+stream = ExtResource("4_w5yvf")
+volume_db = 10.0

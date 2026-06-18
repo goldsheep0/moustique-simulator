@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://bf7ctu5cv7id8"]
+
+[ext_resource type="Script" uid="uid://tv13u4cpnf7h" path="res://scripts/blood_collector.gd" id="1_0srsi"]
+
+[node name="BloodCollector" type="Node2D" unique_id=1439799017]
+script = ExtResource("1_0srsi")

@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://cqla04ufqt0rf"]
+
+[ext_resource type="Script" uid="uid://bdonlnu200t76" path="res://scripts/ground.gd" id="1_pybca"]
+
+[node name="Ground" type="Node2D" unique_id=752410338]
+script = ExtResource("1_pybca")
+radius = null
+
+[node name="Line2D" type="Line2D" parent="." unique_id=2000116847]
+width = 1.0

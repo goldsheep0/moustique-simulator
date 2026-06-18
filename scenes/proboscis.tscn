@@ -1,0 +1,58 @@
+[gd_scene format=3 uid="uid://i1ctmnukbakl"]
+
+[ext_resource type="Script" uid="uid://ct6n50wvo1woh" path="res://scripts/proboscis.gd" id="1_y5e02"]
+[ext_resource type="Texture2D" uid="uid://bait400igpfdp" path="res://assets/textures/solid_white.png" id="2_f01q8"]
+[ext_resource type="Shader" uid="uid://c5kywp6f2yd3d" path="res://shaders/proboscis.gdshader" id="3_0wb8m"]
+[ext_resource type="Texture2D" uid="uid://boehrwsq16tjg" path="res://assets/aseprite/tete.png" id="3_62vsl"]
+[ext_resource type="AudioStream" uid="uid://q3p8qgr3r843" path="res://assets/sounds/slurp.mp3" id="5_g03c0"]
+[ext_resource type="Material" uid="uid://cor838kidflof" path="res://resources/particles_1.tres" id="5_oluxd"]
+[ext_resource type="Material" uid="uid://bu1ac58hmymqm" path="res://resources/particles_2.tres" id="6_4828r"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_62vsl"]
+shader = ExtResource("3_0wb8m")
+shader_parameter/process = 0.0
+
+[node name="Proboscis" type="Node2D" unique_id=2134397797]
+script = ExtResource("1_y5e02")
+
+[node name="Paroies" type="Node2D" parent="." unique_id=1710443878]
+
+[node name="Sprite2D" type="Sprite2D" parent="Paroies" unique_id=835817714]
+position = Vector2(1, -63.5)
+scale = Vector2(0.005, 0.65)
+texture = ExtResource("2_f01q8")
+
+[node name="Sprite2D2" type="Sprite2D" parent="Paroies" unique_id=221916360]
+position = Vector2(-1, -63.5)
+scale = Vector2(0.005, 0.65)
+texture = ExtResource("2_f01q8")
+
+[node name="Tete" type="Sprite2D" parent="." unique_id=1425736244]
+position = Vector2(0, -142.5)
+scale = Vector2(2, 2)
+texture = ExtResource("3_62vsl")
+
+[node name="Trompe" type="Sprite2D" parent="." unique_id=1364601383]
+material = SubResource("ShaderMaterial_62vsl")
+position = Vector2(0, -63.5)
+scale = Vector2(0.005, 0.65)
+texture = ExtResource("2_f01q8")
+
+[node name="Particles" type="Node2D" parent="." unique_id=465480739]
+
+[node name="ParentParticles" type="GPUParticles2D" parent="Particles" unique_id=958868692]
+emitting = false
+amount = 64
+sub_emitter = NodePath("../ChildParticles")
+fixed_fps = 60
+process_material = ExtResource("5_oluxd")
+
+[node name="ChildParticles" type="GPUParticles2D" parent="Particles" unique_id=1260313603]
+emitting = false
+lifetime = 3.0
+fixed_fps = 60
+process_material = ExtResource("6_4828r")
+
+[node name="Slurp" type="AudioStreamPlayer" parent="." unique_id=1366299578]
+stream = ExtResource("5_g03c0")
+mix_target = 2

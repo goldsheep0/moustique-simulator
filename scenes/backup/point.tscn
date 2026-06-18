@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://bgu5efbb4fpb"]
+
+[ext_resource type="Script" uid="uid://cssmbkpaoi262" path="res://scripts/backup/point.gd" id="1_r0uly"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8yxrp"]
+size = Vector2(0.5, 0.5)
+
+[node name="Point" type="RigidBody2D" unique_id=922978100]
+collision_layer = 2
+gravity_scale = 0.0
+contact_monitor = true
+max_contacts_reported = 10
+script = ExtResource("1_r0uly")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=572068386]
+shape = SubResource("RectangleShape2D_8yxrp")

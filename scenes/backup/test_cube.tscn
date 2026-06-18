@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://dtysyca2iliwa"]
+
+[ext_resource type="Texture2D" uid="uid://bait400igpfdp" path="res://assets/textures/solid_white.png" id="1_bf4sv"]
+[ext_resource type="Script" uid="uid://c6h0og62djupu" path="res://scripts/backup/test_cube.gd" id="1_fxgoe"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bf4sv"]
+size = Vector2(25, 25)
+
+[node name="TestCube" type="Node2D" unique_id=243544304]
+script = ExtResource("1_fxgoe")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=210654751]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=185038418]
+shape = SubResource("RectangleShape2D_bf4sv")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=146838557]
+scale = Vector2(0.125, 0.125)
+texture = ExtResource("1_bf4sv")
